@@ -1,6 +1,6 @@
 # Memory Lane
 
-App to help people with Alzheimer's
+App targeted to help people with Alzheimer's
 
 ## How to run
 
