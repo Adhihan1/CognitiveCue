@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "CognitiveCue",
-    "slug": "CognitiveCue",
+    "name": "MemoryLane",
+    "slug": "MLane",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

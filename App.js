@@ -1,20 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { useFonts } from 'expo-font';
 
 export default function App() {
+  const [loaded] = useFonts({
+    Ostrich: require('./assets/fonts/titleFont.otf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Memory Lane</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Memory Lane</Text>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ff0',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
   },
+  title: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    lineHeight: 45,
+    fontFamily: 'titleFont',
+  }
 });
+
+/**
+
+
+
+
+ */
