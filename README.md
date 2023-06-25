@@ -7,8 +7,8 @@ App targeted to help people with Alzheimer's
 First, clone the repository then cd in with
 
 ```
-git clone https://github.com/Adhihan1/CognitiveCue.git
-cd CognitiveCue
+git clone https://github.com/Adhihan1/MemoryLane.git
+cd MemoryLane
 ```
 
 then
