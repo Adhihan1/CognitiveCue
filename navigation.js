@@ -1,7 +1,7 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
-import Login from '../screens/Login';
-import Register from '../screens/Register'
+import Login from './screens/Login';
+import Register from './screens/Register'
 
 const stackNavigatorOptions = {
     headerShown:false
@@ -14,4 +14,5 @@ const AppNavigator = createStackNavigator({
     defaultNavigationOptions : stackNavigatorOptions
 }  
 );
-export default createAppContainer(AppNavigator);
+
+export default createAppContainer(AppNavigator);;

@@ -1,20 +1,38 @@
+import {createStackNavigator} from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import Login from './screens/Login';
+import Register from './screens/Register'
+
+const stackNavigatorOptions = {
+    headerShown:false
+}
+const AppNavigator = createStackNavigator({
+    Login:{screen:Login},
+    Register:{screen:Register},
+},
+{
+    defaultNavigationOptions : stackNavigatorOptions
+}  
+);
+
+export default createAppContainer(AppNavigator);;
+/**
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { useFonts } from 'expo-font';
+import { AppMain } from './navigation';
 
 export default function App() {
-  const [loaded] = useFonts({
-    Ostrich: require('./assets/fonts/titleFont.otf'),
-  });
 
-  if (!loaded) {
-    return null;
+  var tempState = "";
+  var accounts = []; // will be implemented later
+  if (accounts.length == 0) {
+    console.log('hi')
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Memory Lane</Text>
-      <StatusBar style="auto" />
+     <AppMain></AppMain>
     </SafeAreaView>
   );
 }
@@ -30,12 +48,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
     lineHeight: 45,
-    fontFamily: 'titleFont',
+    fontFamily: 'SemiBold',
   }
 });
-
-/**
-
 
 
 
