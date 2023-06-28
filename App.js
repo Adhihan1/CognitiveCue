@@ -2,6 +2,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import Login from './screens/Login';
 import Register from './screens/Register'
+import Rating from './screens/Rating'
 
 const stackNavigatorOptions = {
     headerShown:false
@@ -9,6 +10,7 @@ const stackNavigatorOptions = {
 const AppNavigator = createStackNavigator({
     Login:{screen:Login},
     Register:{screen:Register},
+    Ratomg:{screen:Rating},
 },
 {
     defaultNavigationOptions : stackNavigatorOptions

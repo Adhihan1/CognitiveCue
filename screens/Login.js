@@ -91,6 +91,17 @@ export default class Login extends React.Component{
                     fontFamily:"SemiBold",
                     paddingVertical:30
                 }}>New User</Text>
+
+                <Text 
+                
+                onPress={()=>navigate('Rating')}
+                
+                style={{
+                    alignSelf:"center",
+                    color:"#00716F",
+                    fontFamily:"SemiBold",
+                    paddingVertical:30
+                }}>Rate our app</Text>
             </View>
         )
     }
