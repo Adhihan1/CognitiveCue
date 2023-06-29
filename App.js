@@ -10,7 +10,7 @@ const stackNavigatorOptions = {
 const AppNavigator = createStackNavigator({
     Login:{screen:Login},
     Register:{screen:Register},
-    Ratomg:{screen:Rating},
+    Rating:{screen:Rating},
 },
 {
     defaultNavigationOptions : stackNavigatorOptions
