@@ -6,21 +6,16 @@ import { FontFamily, Color, FontSize } from "./modules/GlobalStyles";
 const Rating = () => {
   return (
     <View style={styles.rating}>
-      <Image
-        style={[styles.iosstatusBarwhiteIcon, styles.howAreYouPosition]}
-        contentFit="cover"
-        source={require("../assets/iosstatus-barwhite.png")}
-      />
       <View style={styles.popup}>
         <Image
           style={styles.bgIcon}
           contentFit="cover"
-          source={require("../assets/bg.png")}
+          source={require("./assets/Rating/rating-bg.png")}
         />
         <Image
           style={styles.popupChild}
           contentFit="cover"
-          source={require("../assets/group-18.png")}
+          source={require("./assets/Rating/5-stars.png")}
         />
         <Pressable style={[styles.buttonprimary, styles.textLayout]}>
           <Text style={[styles.iLoveIt, styles.text1Typo]}>I love it!</Text>
