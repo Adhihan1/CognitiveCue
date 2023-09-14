@@ -1,9 +1,17 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import InputText from "../components/InputText";
 import { Color, FontFamily, FontSize, Border, Padding } from "../GlobalStyles";
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
+  const [selected, setSelected] = React.useState(false);
+
+  const styles = getStyles(selected);
+
+  const [Name, setName] = React.useState("")
+  const [Email, setEmail] = React.useState("")
+  const [Password, setPassword] = React.useState("")
+
   return (
     <View style={[styles.signUp, styles.frameFlexBox]}>
       <Text style={[styles.signUp1, styles.signUp1Typo]}>Sign Up</Text>
@@ -16,30 +24,52 @@ const SignUp = () => {
             inputTextWidth="unset"
             inputTextAlignSelf="stretch"
             inputTextMarginTop="unset"
+            defaultText="Name"
+            secure={false}
+            textValue={setName}
           />
           <InputText
             inputTextWidth="unset"
             inputTextAlignSelf="stretch"
             inputTextMarginTop={38}
+            defaultText="Email"
+            secure={false}
+            textValue={setEmail}
           />
           <InputText
             inputTextWidth="unset"
             inputTextAlignSelf="stretch"
             inputTextMarginTop={38}
+            defaultText="Password"
+            secure={true}
+            textValue={setPassword}
           />
         </View>
         <View style={[styles.frame, styles.frameFlexBox]}>
-          <Pressable style={styles.signupbutton}>
+          <TouchableOpacity
+            onPress={() => {
+              setSelected(!selected);
+              //Sign in
+              console.log(Name, Email, Password)
+            }}
+            style={styles.signupbutton}
+          >
             <Text style={styles.loginlinkTypo}>Sign Up</Text>
-          </Pressable>
-          <Text style={[styles.loginlink, styles.loginlinkTypo]}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setSelected(!selected);
+              navigation.navigate('LogIn');
+            }}
+            style={[styles.loginlink, styles.loginlinkTypo]}
+          >Login</TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const getStyles = (selected) => StyleSheet.create({
   frameFlexBox: {
     overflow: "hidden",
     alignItems: "center",
@@ -53,7 +83,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.rosarioRegular,
     fontSize: FontSize.size_11xl,
     textAlign: "center",
-    color: Color.white,
+    color: selected ? "#FFFFFF" : Color.white,
   },
   signUp1: {
     fontSize: FontSize.size_41xl,
@@ -71,7 +101,7 @@ const styles = StyleSheet.create({
   },
   signupbutton: {
     borderRadius: Border.br_81xl,
-    backgroundColor: Color.dimgray,
+    backgroundColor: selected ? "#404263" : Color.dimgray,
     paddingHorizontal: Padding.p_13xl,
     paddingVertical: Padding.p_base,
     justifyContent: "center",

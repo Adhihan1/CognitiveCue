@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { FontFamily, FontSize, Border, Color } from "../GlobalStyles";
 
 const getStyleValue = (key, value) => {
@@ -11,6 +11,9 @@ const InputText = ({
   inputTextWidth,
   inputTextAlignSelf,
   inputTextMarginTop,
+  defaultText,
+  secure,
+  textValue
 }) => {
   const inputTextStyle = useMemo(() => {
     return {
@@ -20,56 +23,60 @@ const InputText = ({
     };
   }, [inputTextWidth, inputTextAlignSelf, inputTextMarginTop]);
 
+  const [isSecure, setSecure] = React.useState(secure)
+
+  const styles = getStyles(secure);
+
   return (
     <View style={[styles.inputtext, inputTextStyle]}>
-      <Image
-        style={styles.bgIcon}
-        contentFit="cover"
-        source={require("../assets/bg.png")}
-      />
-      <Text style={[styles.name, styles.nameTypo]}>Name</Text>
-      <Text style={[styles.show, styles.nameTypo]}>Show</Text>
+      <TextInput
+        style={[styles.name]}
+        placeholder={defaultText}
+        placeholderTextColor={"#bdbdbd"}
+        secureTextEntry={isSecure}
+        onChangeText={newText => textValue(newText)}
+      ></TextInput>
+      <Text
+        onPress={() => {
+          console.log("pressed", isSecure)
+          if (isSecure == false) {
+            setSecure(true)
+          } else {
+            setSecure(false)
+          }
+        }}
+        style={[styles.show]}
+      >Show</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  nameTypo: {
+const getStyles = (secure) => StyleSheet.create({
+  name: {
     fontFamily: FontFamily.uI16Medium,
     fontWeight: "500",
     fontSize: FontSize.uI16Semi_size,
-    top: "50%",
-    marginTop: -9,
-    position: "absolute",
-  },
-  bgIcon: {
-    height: "100%",
-    width: "100%",
-    top: "0%",
-    right: "0%",
-    bottom: "0%",
-    left: "0%",
-    borderRadius: Border.br_5xs,
-    maxWidth: "100%",
-    overflow: "hidden",
-    maxHeight: "100%",
-    position: "absolute",
-  },
-  name: {
-    left: 16,
     color: Color.gray03,
     textAlign: "left",
-  },
-  show: {
-    right: 16,
-    color: Color.greenPrimary,
-    textAlign: "right",
-    display: "none",
+    width: "100%"
   },
   inputtext: {
     width: 343,
     height: 50,
+    backgroundColor: Color.white,
+    borderRadius: 8,
+    padding: 15
   },
+  show: {
+    fontFamily: FontFamily.uI16Medium,
+    fontWeight: "500",
+    fontSize: FontSize.uI16Semi_size,
+    color: Color.slategray,
+    textAlign: "right",
+    right: 15,
+    display: secure ? "block" : "none",
+    position: "absolute"
+  }
 });
 
 export default InputText;

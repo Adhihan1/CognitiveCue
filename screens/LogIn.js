@@ -1,98 +1,123 @@
 import * as React from "react";
-import { Text, StyleSheet, TextInput, View, Pressable } from "react-native";
-import { FontSize, FontFamily, Color, Border, Padding } from "../GlobalStyles";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import InputText from "../components/InputText";
+import { Color, FontFamily, FontSize, Border, Padding } from "../GlobalStyles";
 
-const LogIn = () => {
+const LogIn = ({navigation}) => {
+  const [selected, setSelected] = React.useState(false);
+
+  const styles = getStyles(selected);
+
+  const [Email, setEmail] = React.useState("")
+  const [Password, setPassword] = React.useState("")
+
   return (
-    <View style={styles.logIn}>
-      <View style={[styles.frame, styles.frameFlexBox]}>
-        <Text style={styles.loginheader}>Log In</Text>
-        <View style={[styles.inputs, styles.frameFlexBox]}>
-          <TextInput
-            style={styles.emailinputTypo}
-            placeholder="Email"
-            placeholderTextColor="#bdbdbd"
+    <View style={[styles.logIn, styles.frameFlexBox]}>
+      <Text style={[styles.LogIn1, styles.logIn1Typo]}>Log In</Text>
+      <View style={styles.logininputsParent}>
+        <View style={styles.logininputs}>
+          <InputText
+            inputTextWidth="unset"
+            inputTextAlignSelf="stretch"
+            inputTextMarginTop={38}
+            defaultText="Email"
+            secure={false}
+            textValue={setEmail}
           />
-          <TextInput
-            style={[styles.passwordinput, styles.emailinputTypo]}
-            placeholder="Password"
-            placeholderTextColor="#bdbdbd"
+          <InputText
+            inputTextWidth="unset"
+            inputTextAlignSelf="stretch"
+            inputTextMarginTop={38}
+            defaultText="Password"
+            secure={true}
+            textValue={setPassword}
           />
         </View>
-        <Pressable style={[styles.loginbutton, styles.frameFlexBox]}>
-          <Text style={[styles.loginbuttontext, styles.singuplinkTypo]}>
-            Log In
-          </Text>
-        </Pressable>
-        <Text style={[styles.singuplink, styles.singuplinkTypo]}>Sign Up</Text>
+        <View style={[styles.frame, styles.frameFlexBox]}>
+          <TouchableOpacity
+            onPress={() => {
+              setSelected(!selected);
+              //Log In
+              console.log(Email, Password)
+            }}
+            style={styles.loginbutton}
+          >
+            <Text style={styles.signinlinkTypo}>Log In</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setSelected(!selected);
+              navigation.navigate('SignUp');
+            }}
+            style={[styles.signinlink, styles.signinlinkTypo]}
+          >SignUp</TouchableOpacity>
+        </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const getStyles = (selected) => StyleSheet.create({
   frameFlexBox: {
+    overflow: "hidden",
+    alignItems: "center",
+  },
+  logIn1Typo: {
+    textAlign: "center",
+    color: Color.white,
+    fontFamily: FontFamily.novaRound,
+  },
+  signinlinkTypo: {
+    fontFamily: FontFamily.rosarioRegular,
+    fontSize: FontSize.size_11xl,
+    textAlign: "center",
+    color: selected ? "#FFFFFF" : Color.white,
+  },
+  LogIn1: {
+    fontSize: FontSize.size_41xl,
+    alignSelf: "stretch",
+  },
+  loginsubtext: {
+    fontSize: 20,
+    width: 343,
+    height: 35,
+    marginTop: 15,
+  },
+  logininputs: {
     alignSelf: "stretch",
     alignItems: "center",
   },
-  emailinputTypo: {
-    fontSize: FontSize.uI16Semi_size,
-    fontFamily: FontFamily.uI16Medium,
-    fontWeight: "500",
-    height: 50,
-    alignSelf: "stretch",
-  },
-  singuplinkTypo: {
-    fontFamily: FontFamily.rosarioRegular,
-    color: Color.white,
-  },
-  loginheader: {
-    fontSize: FontSize.size_41xl,
-    fontFamily: FontFamily.novaRound,
-    height: 74,
-    textAlign: "center",
-    color: Color.white,
-    alignSelf: "stretch",
-  },
-  passwordinput: {
-    marginTop: 38,
-  },
-  inputs: {
-    marginTop: 31,
-  },
-  loginbuttontext: {
-    fontSize: FontSize.size_16xl,
-    textAlign: "center",
-  },
   loginbutton: {
     borderRadius: Border.br_81xl,
-    backgroundColor: Color.dimgray,
+    backgroundColor: selected ? "#404263" : Color.dimgray,
     paddingHorizontal: Padding.p_13xl,
     paddingVertical: Padding.p_base,
     justifyContent: "center",
-    marginTop: 31,
+    alignSelf: "stretch",
+    alignItems: "center",
   },
-  singuplink: {
-    fontSize: FontSize.size_11xl,
-    textAlign: "right",
-    marginTop: 31,
+  signinlink: {
+    marginTop: 22,
+    alignSelf: "stretch",
   },
   frame: {
-    height: 368,
-    overflow: "hidden",
+    marginTop: 49,
     alignSelf: "stretch",
+    alignItems: "center",
+  },
+  logininputsParent: {
+    marginTop: 15,
+    alignSelf: "stretch",
+    alignItems: "center",
   },
   logIn: {
     backgroundColor: Color.slategray,
     flex: 1,
     width: "100%",
     height: 812,
-    paddingLeft: Padding.p_mini,
-    paddingTop: Padding.p_49xl,
-    paddingRight: 17,
-    paddingBottom: 317,
+    paddingHorizontal: 13,
+    paddingVertical: Padding.p_49xl,
     alignItems: "center",
-    overflow: "hidden",
   },
 });
 
