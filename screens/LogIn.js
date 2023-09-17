@@ -1,7 +1,9 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from "react-native";
 import InputText from "../components/InputText";
 import { Color, FontFamily, FontSize, Border, Padding } from "../GlobalStyles";
+
+const { height } = Dimensions.get('window');
 
 const LogIn = ({navigation}) => {
   const [selected, setSelected] = React.useState(false);
@@ -44,13 +46,13 @@ const LogIn = ({navigation}) => {
           >
             <Text style={styles.signinlinkTypo}>Log In</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          <Text
             onPress={() => {
               setSelected(!selected);
               navigation.navigate('SignUp');
             }}
             style={[styles.signinlink, styles.signinlinkTypo]}
-          >SignUp</TouchableOpacity>
+          >SignUp</Text>
         </View>
       </View>
     </View>
@@ -118,6 +120,8 @@ const getStyles = (selected) => StyleSheet.create({
     paddingHorizontal: 13,
     paddingVertical: Padding.p_49xl,
     alignItems: "center",
+
+    paddingTop: height * 0.15
   },
 });
 

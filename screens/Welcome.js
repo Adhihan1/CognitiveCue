@@ -2,6 +2,7 @@ import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Welcome = ({navigation}) => {
   const [selected, setSelected] = React.useState(false);
@@ -9,7 +10,7 @@ const Welcome = ({navigation}) => {
   const styles = getStyles(selected);
 
   return (
-    <View style={styles.welcome}>
+    <SafeAreaView style={styles.welcome}>
       <Image
         style={styles.bgIcon}
         contentFit="cover"
@@ -27,7 +28,7 @@ const Welcome = ({navigation}) => {
       >
         <Text style={styles.getStartedText}>Get Started!</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -40,10 +41,9 @@ const getStyles = (selected) => StyleSheet.create({
     overflow: "hidden",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: "7vh",
-    paddingBottom: "7vh",
   },
   bgIcon: {
+    marginTop: '15%',
     width: 206,
     height: 230
   },
@@ -79,7 +79,7 @@ const getStyles = (selected) => StyleSheet.create({
   },
   getStarted: {
     width: "90%",
-    height: "fit-content"
+    height: "fit-content",
   },
   getStartedText: {
     fontSize: 35,

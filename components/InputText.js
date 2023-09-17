@@ -65,7 +65,8 @@ const getStyles = (secure) => StyleSheet.create({
     height: 50,
     backgroundColor: Color.white,
     borderRadius: 8,
-    padding: 15
+    padding: 15,
+    paddingBottom: 12
   },
   show: {
     fontFamily: FontFamily.uI16Medium,
@@ -74,8 +75,9 @@ const getStyles = (secure) => StyleSheet.create({
     color: Color.slategray,
     textAlign: "right",
     right: 15,
-    display: secure ? "block" : "none",
-    position: "absolute"
+    display: secure ? "flex" : "none",
+    position: "absolute",
+    bottom: 13
   }
 });
 

@@ -15,6 +15,7 @@ import Games from "./screens/Games";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -38,7 +39,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <SafeAreaProvider>
       <NavigationContainer>
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -90,7 +91,7 @@ const App = () => {
           </Stack.Navigator>
         ) : null}
       </NavigationContainer>
-    </>
+    </SafeAreaProvider>
   );
 };
 export default App;

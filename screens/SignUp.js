@@ -1,7 +1,9 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from "react-native";
 import InputText from "../components/InputText";
 import { Color, FontFamily, FontSize, Border, Padding } from "../GlobalStyles";
+
+const { height } = Dimensions.get('window');
 
 const SignUp = ({navigation}) => {
   const [selected, setSelected] = React.useState(false);
@@ -49,20 +51,34 @@ const SignUp = ({navigation}) => {
           <TouchableOpacity
             onPress={() => {
               setSelected(!selected);
-              //Sign in
               console.log(Name, Email, Password)
+              data = {
+                "name": Name,
+                "email": Email,
+                "password": Password,
+              }
+              fetch("memorylaneserver.tedisc00l.repl.co/api/signin", {
+                method: "POST",
+                body: JSON.stringify(data)
+              }).then(response => response.json())
+              .then((data) => {
+                console.log(data)
+              }).catch((error)=>{
+                console.log("fetch error")
+                alert(error.message)
+              })
             }}
             style={styles.signupbutton}
           >
             <Text style={styles.loginlinkTypo}>Sign Up</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          <Text
             onPress={() => {
               setSelected(!selected);
               navigation.navigate('LogIn');
             }}
             style={[styles.loginlink, styles.loginlinkTypo]}
-          >Login</TouchableOpacity>
+          >Login</Text>
         </View>
       </View>
     </View>
@@ -130,6 +146,7 @@ const getStyles = (selected) => StyleSheet.create({
     paddingHorizontal: 13,
     paddingVertical: Padding.p_49xl,
     alignItems: "center",
+    paddingTop: height * 0.15
   },
 });
 
