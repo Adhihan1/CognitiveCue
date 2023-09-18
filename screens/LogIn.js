@@ -39,8 +39,35 @@ const LogIn = ({navigation}) => {
           <TouchableOpacity
             onPress={() => {
               setSelected(!selected);
-              //Log In
               console.log(Email, Password)
+              data = {
+                "email": Email,
+                "password": Password,
+              }
+              fetch("https://memorylaneserver.tedisc00l.repl.co/api/login", {
+                method: "POST",
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+              }).then(response => response.text())
+              .then((data) => {
+                if (data == 'Incorrect email') {
+                  alert(data)
+                  navigation.navigate('LogIn');
+                } else if (data == "Incorrect password") {
+                  alert(data)
+                } else {
+                  alert("Signed In!")
+                  var authToken = data
+                  alert(authToken) // delete in prod
+                  navigation.navigate('HomeScreen');
+                }
+              }).catch((error)=>{
+                console.log("fetch error")
+                alert(error.message)
+              })
             }}
             style={styles.loginbutton}
           >

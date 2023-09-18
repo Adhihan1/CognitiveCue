@@ -2,10 +2,11 @@ import * as React from "react";
 import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { FontFamily, FontSize, Color, Padding, Border } from "../GlobalStyles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
   return (
-    <View style={[styles.homeScreen, styles.homeScreenFlexBox]}>
+    <SafeAreaView style={[styles.homeScreen, styles.homeScreenFlexBox]}>
       <View style={[styles.header, styles.headerFlexBox]}>
         <View style={styles.frameParent}>
           <View style={styles.memoryLaneWrapper}>
@@ -78,7 +79,7 @@ const HomeScreen = () => {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -57,12 +57,21 @@ const SignUp = ({navigation}) => {
                 "email": Email,
                 "password": Password,
               }
-              fetch("memorylaneserver.tedisc00l.repl.co/api/signin", {
+              fetch("https://memorylaneserver.tedisc00l.repl.co/api/signin", {
                 method: "POST",
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                },
                 body: JSON.stringify(data)
-              }).then(response => response.json())
+              }).then(response => response.text())
               .then((data) => {
-                console.log(data)
+                if (data == 'Registered Account!') {
+                  alert('Registered Account!\nPlease Sign In!')
+                  navigation.navigate('LogIn');
+                } else if (data == "Email Exists!") {
+                  console.log(data)
+                }
               }).catch((error)=>{
                 console.log("fetch error")
                 alert(error.message)
