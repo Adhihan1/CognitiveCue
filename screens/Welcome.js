@@ -10,7 +10,11 @@ const Welcome = ({navigation}) => {
   const styles = getStyles(selected);
 
   return (
-    <SafeAreaView style={styles.welcome}>
+    <SafeAreaView style={styles.welcome} 
+      onPress={() => {
+        //navigation.navigate('Rating');
+      }}
+    >
       <Image
         style={styles.bgIcon}
         contentFit="cover"
