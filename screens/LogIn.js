@@ -40,7 +40,7 @@ const LogIn = ({navigation}) => {
             onPress={() => {
               setSelected(!selected);
               console.log(Email, Password)
-              data = {
+              var data = {
                 "email": Email,
                 "password": Password,
               }
