@@ -10,11 +10,7 @@ const Welcome = ({navigation}) => {
   const styles = getStyles(selected);
 
   return (
-    <SafeAreaView style={styles.welcome} 
-      onPress={() => {
-        //navigation.navigate('Rating');
-      }}
-    >
+    <SafeAreaView style={styles.welcome} >
       <Image
         style={styles.bgIcon}
         contentFit="cover"
@@ -26,7 +22,7 @@ const Welcome = ({navigation}) => {
       <TouchableOpacity 
         onPress={() => {
           setSelected(!selected);
-          navigation.navigate('SignUp');
+          navigation.navigate('Rating');
         }}
         style={[styles.buttonprimary, styles.getStarted]}
       >

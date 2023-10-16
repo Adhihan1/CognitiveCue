@@ -6,37 +6,34 @@ import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 const ContainerPopupButtons = () => {
   return (
     <View style={styles.popup}>
-      <Image
-        style={styles.bgIcon}
-        contentFit="cover"
-        source={require("../assets/bg1.png")}
-      />
-      <Pressable style={[styles.buttonprimary, styles.notRightNowPosition]}>
-        <Text style={styles.iLoveIt}>I love it!</Text>
-      </Pressable>
-      <Text style={[styles.notRightNow, styles.notRightNowPosition]}>
-        Not right now.
-      </Text>
-      <View style={[styles.text, styles.textLayout]}>
-        <Text style={[styles.howAreYou, styles.text1Clr]}>
-          HOW ARE YOU LIKING OUR APP SO FAR?
+      <View
+        style={styles.bg}
+      >
+        <Image
+          style={styles.vectorIcon}
+          contentFit="cover"
+          source={require("../assets/vector13.png")}
+        />
+        <View style={[styles.text, styles.textLayout]}>
+          <Text style={[styles.howAreYou, styles.text1Clr]}>
+            HOW ARE YOU LIKING OUR APP SO FAR?
+          </Text>
+          <Text style={[styles.text1, styles.text1Clr]} />
+        </View>
+        <Pressable style={[styles.buttonprimary, styles.notRightNowPosition]}>
+          <Text style={styles.iLoveIt}>I love it!</Text>
+        </Pressable>
+        <Text style={[styles.notRightNow, styles.notRightNowPosition]}>
+          Not right now.
         </Text>
-        <Text style={[styles.text1, styles.text1Clr]} />
       </View>
-      <Image
-        style={styles.vectorIcon}
-        contentFit="cover"
-        source={require("../assets/vector13.png")}
-      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   notRightNowPosition: {
-    width: 311,
-    left: 17,
-    position: "absolute",
+    width: 311
   },
   textLayout: {
     height: 84,
@@ -45,15 +42,13 @@ const styles = StyleSheet.create({
   text1Clr: {
     color: Color.black,
     textAlign: "center",
-    position: "absolute",
   },
-  bgIcon: {
-    top: -18,
-    left: -16,
+  bg: {
     borderRadius: Border.br_5xs,
-    width: 375,
-    height: 467,
-    position: "absolute",
+    width: 343,
+    height: 427,
+    backgroundColor: "white",
+    display: "flex"
   },
   iLoveIt: {
     fontSize: FontSize.size_11xl,
@@ -62,7 +57,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   buttonprimary: {
-    top: 271,
     borderRadius: Border.br_81xl,
     backgroundColor: Color.dimgray,
     paddingHorizontal: Padding.p_13xl,
@@ -70,7 +64,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   notRightNow: {
-    top: 352,
     fontSize: FontSize.size_mini,
     fontFamily: FontFamily.redRoseBold,
     color: Color.dimgray,
@@ -78,8 +71,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   howAreYou: {
-    top: 0,
-    left: 0,
     fontSize: FontSize.size_16xl,
     fontFamily: FontFamily.openSansBold,
     height: 84,
@@ -87,23 +78,17 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   text1: {
-    top: 47,
-    left: 207,
     fontSize: FontSize.uI16Semi_size,
     fontWeight: "800",
     fontFamily: FontFamily.ostrich,
   },
   text: {
-    top: 129,
-    left: 13,
-    position: "absolute",
   },
   vectorIcon: {
-    top: 45,
-    left: 10,
     width: 322,
     height: 54,
-    position: "absolute",
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   popup: {
     width: 343,
