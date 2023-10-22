@@ -3,37 +3,45 @@ import { Pressable, Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import MainProfileContentContainer from "../components/MainProfileContentContainer";
 import { Color, FontSize, FontFamily, Padding } from "../GlobalStyles";
+import { SafeAreaView } from "react-native-safe-area-context";
+import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 
-const ProfilePosts = () => {
+const ProfilePosts = ({navigation}) => {
   return (
-    <View style={styles.profileposts}>
+    <SafeAreaView style={styles.profileposts}>
       <View style={[styles.header, styles.headerFlexBox]}>
-        <Text style={styles.settings}>Settings</Text>
+        <Text 
+          style={styles.settings}
+          onPress={() => {
+            // DISPLAY SETTINGS HERE
+          }}
+        >Settings</Text>
         <Text style={[styles.profile, styles.logoutSpaceBlock]}>Profile</Text>
-        <Text style={[styles.logout, styles.logoutSpaceBlock]}>Logout</Text>
+        <Text 
+          style={[styles.logout, styles.logoutSpaceBlock]}
+          onPress={() => {
+            // LOGOUT
+            navigation.navigate('LogIn');
+          }}
+        >Logout</Text>
       </View>
       <MainProfileContentContainer />
-      <Pressable
-        style={[
-          styles.notificationprefrencesbutton,
-          styles.privacybuttonFlexBox,
-        ]}
-      >
+      <Pressable style={[styles.optionButton, styles.privacybuttonFlexBox]}>
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
           source={require("../assets/vector1.png")}
         />
         <Text
-          style={[styles.notificationPreferences, styles.privacyTypo]}
-        >{`Notification Preferences `}</Text>
+          style={[styles.privacy, styles.privacyTypo]}
+        >Notification Preferences</Text>
         <Image
-          style={styles.vectorIcon1}
+          style={styles.arrowIcon}
           contentFit="cover"
           source={require("../assets/vector2.png")}
         />
       </Pressable>
-      <Pressable style={[styles.privacybutton, styles.privacybuttonFlexBox]}>
+      <Pressable style={[styles.optionButton, styles.privacybuttonFlexBox]}>
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
@@ -41,42 +49,14 @@ const ProfilePosts = () => {
         />
         <Text style={[styles.privacy, styles.privacyTypo]}>Privacy</Text>
         <Image
-          style={styles.vectorIcon3}
+          style={styles.arrowIcon}
           contentFit="cover"
-          source={require("../assets/vector4.png")}
+          source={require("../assets/vector2.png")}
         />
       </Pressable>
       <View style={styles.profilepostsChild} />
-      <View style={[styles.bottommenubar, styles.headerFlexBox]}>
-        <View style={[styles.vectorParent, styles.headerFlexBox]}>
-          <Image
-            style={styles.vectorIcon4}
-            contentFit="cover"
-            source={require("../assets/vector5.png")}
-          />
-          <Image
-            style={styles.vectorIcon5}
-            contentFit="cover"
-            source={require("../assets/vector6.png")}
-          />
-          <Image
-            style={[styles.vectorIcon6, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector7.png")}
-          />
-          <Image
-            style={[styles.vectorIcon6, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector8.png")}
-          />
-          <Image
-            style={[styles.vectorIcon8, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector9.png")}
-          />
-        </View>
-      </View>
-    </View>
+      <BottomMenuBarContainer />
+    </SafeAreaView>
   );
 };
 
@@ -92,13 +72,11 @@ const styles = StyleSheet.create({
   privacybuttonFlexBox: {
     borderColor: "#000",
     borderStyle: "solid",
-    justifyContent: "center",
     flexDirection: "row",
     alignSelf: "stretch",
     alignItems: "center",
   },
   privacyTypo: {
-    height: 50,
     display: "flex",
     fontSize: FontSize.size_2xl,
     textAlign: "center",
@@ -106,10 +84,6 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.poetsonOne,
     justifyContent: "center",
     alignItems: "center",
-  },
-  vectorIconLayout: {
-    width: 45,
-    marginLeft: 24,
   },
   settings: {
     textAlign: "left",
@@ -139,32 +113,40 @@ const styles = StyleSheet.create({
   vectorIcon: {
     width: 43,
     height: 43,
+    marginRight: "auto",
+    marginLeft: 15,
   },
   notificationPreferences: {
     width: 240,
     marginLeft: 35,
   },
-  vectorIcon1: {
+  arrowIcon: {
     height: 31,
     width: 22,
-    marginLeft: 35,
+    marginRight: 15,
+    marginLeft: "auto",
   },
   notificationprefrencesbutton: {
     borderWidth: 1,
   },
   privacy: {
-    width: 76,
-    marginLeft: 117,
+    position: "absolute",
+    marginLeft: "auto",
+    marginRight: "auto",
+    left: 0,
+    right: 0,
+    textAlign: "center",
   },
   vectorIcon3: {
     height: 27,
     marginLeft: 117,
     width: 22,
   },
-  privacybutton: {
+  optionButton: {
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
+    height: 70,
   },
   profilepostsChild: {
     width: 375,

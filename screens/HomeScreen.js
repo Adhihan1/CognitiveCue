@@ -48,6 +48,7 @@ const HomeScreen = () => {
         </Text>
         <View style={[styles.tipquote, styles.notif1Bg]}>
           <Text style={[styles.idkGeo, styles.idkGeoTypo]}>idk - “geo”</Text>
+          
         </View>
       </View>
       <View style={[styles.bottommenubar, styles.notif1Bg]}>
@@ -75,7 +76,7 @@ const HomeScreen = () => {
           <Image
             style={[styles.vectorIcon4, styles.vectorIconLayout]}
             contentFit="cover"
-            source={require("../assets/vector10.png")}
+            source={require("../assets/vector9.png")}
           />
         </View>
       </View>
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.rosarioRegular,
     fontSize: FontSize.size_6xl,
     textAlign: "left",
+    borerRadius: "10",
     color: Color.white,
   },
   notif1Bg: {
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
   hiVictoria: {
     fontSize: 33,
     fontFamily: FontFamily.ramblaRegular,
-    width: 146,
+    width: 200,
     display: "flex",
     textAlign: "center",
     color: Color.white,

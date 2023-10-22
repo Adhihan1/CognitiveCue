@@ -30,7 +30,7 @@ const BottomMenuBarContainer = () => {
         <Image
           style={[styles.vectorIcon4, styles.vectorIconLayout]}
           contentFit="cover"
-          source={require("../assets/vector10.png")}
+          source={require("../assets/vector9.png")}
         />
       </View>
     </Pressable>

@@ -71,7 +71,7 @@ const Reminders = () => {
           <Image
             style={[styles.vectorIcon5, styles.vectorIconLayout]}
             contentFit="cover"
-            source={require("../assets/vector10.png")}
+            source={require("../assets/vector9.png")}
           />
         </View>
       </View>
