@@ -3,8 +3,9 @@ import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { FontFamily, FontSize, Color, Padding, Border } from "../GlobalStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
+import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={[styles.homeScreen, styles.homeScreenFlexBox]}>
       <View style={[styles.header, styles.headerFlexBox]}>
@@ -12,11 +13,17 @@ const HomeScreen = () => {
           <View style={styles.memoryLaneWrapper}>
             <Text style={styles.memoryLane}>Memory Lane</Text>
           </View>
-          <Image
-            style={styles.userIcon}
-            contentFit="cover"
-            source={require("../assets/user.png")}
-          />
+          <Pressable
+            onPress={() => {
+              navigation.navigate("ProfilePosts");
+            }}
+          >
+            <Image
+              style={styles.userIcon}
+              contentFit="cover"
+              source={require("../assets/user.png")}
+            />
+          </Pressable>
         </View>
       </View>
       <View style={[styles.name, styles.nameLayout]}>
@@ -48,38 +55,9 @@ const HomeScreen = () => {
         </Text>
         <View style={[styles.tipquote, styles.notif1Bg]}>
           <Text style={[styles.idkGeo, styles.idkGeoTypo]}>idk - “geo”</Text>
-          
         </View>
       </View>
-      <View style={[styles.bottommenubar, styles.notif1Bg]}>
-        <View style={[styles.vectorParent, styles.homeScreenFlexBox]}>
-          <Image
-            style={styles.vectorIcon}
-            contentFit="cover"
-            source={require("../assets/vector5.png")}
-          />
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector6.png")}
-          />
-          <Image
-            style={[styles.vectorIcon2, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector7.png")}
-          />
-          <Image
-            style={[styles.vectorIcon2, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector8.png")}
-          />
-          <Image
-            style={[styles.vectorIcon4, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector9.png")}
-          />
-        </View>
-      </View>
+      <BottomMenuBarContainer navigation={navigation} />
     </SafeAreaView>
   );
 };

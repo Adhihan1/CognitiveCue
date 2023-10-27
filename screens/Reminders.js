@@ -2,10 +2,12 @@ import * as React from "react";
 import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const Reminders = () => {
+const Reminders = ({ navigation }) => {
   return (
-    <View style={[styles.reminders, styles.remindersFlexBox]}>
+    <SafeAreaView style={[styles.reminders, styles.remindersFlexBox]}>
       <View style={[styles.header, styles.dateFlexBox]}>
         <Text style={[styles.reminders1, styles.todayFlexBox]}>Reminders</Text>
       </View>
@@ -46,36 +48,8 @@ const Reminders = () => {
           source={require("../assets/vector12.png")}
         />
       </Pressable>
-      <View style={[styles.bottommenubar, styles.remindersFlexBox]}>
-        <View style={[styles.vectorParent, styles.dateFlexBox]}>
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector5.png")}
-          />
-          <Image
-            style={styles.vectorIcon2}
-            contentFit="cover"
-            source={require("../assets/vector6.png")}
-          />
-          <Image
-            style={[styles.vectorIcon3, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector7.png")}
-          />
-          <Image
-            style={[styles.vectorIcon3, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector8.png")}
-          />
-          <Image
-            style={[styles.vectorIcon5, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector9.png")}
-          />
-        </View>
-      </View>
-    </View>
+      <BottomMenuBarContainer navigation={navigation} />
+    </SafeAreaView>
   );
 };
 

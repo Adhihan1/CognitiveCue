@@ -1,17 +1,24 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import InputText from "../components/InputText";
 import { Color, FontFamily, FontSize, Border, Padding } from "../GlobalStyles";
 
-const { height } = Dimensions.get('window');
+const { height } = Dimensions.get("window");
 
-const LogIn = ({navigation}) => {
+const LogIn = ({ navigation }) => {
   const [selected, setSelected] = React.useState(false);
 
   const styles = getStyles(selected);
 
-  const [Email, setEmail] = React.useState("")
-  const [Password, setPassword] = React.useState("")
+  const [Email, setEmail] = React.useState("");
+  const [Password, setPassword] = React.useState("");
 
   return (
     <View style={[styles.logIn, styles.frameFlexBox]}>
@@ -39,7 +46,11 @@ const LogIn = ({navigation}) => {
           <TouchableOpacity
             onPress={() => {
               setSelected(!selected);
-              console.log(Email, Password)
+              if (Email == "admin@admin.com" && Password == "password") {
+                alert("Signed In!");
+                navigation.navigate("HomeScreen");
+              }
+              /*console.log(Email, Password)
               var data = {
                 "email": Email,
                 "password": Password,
@@ -67,7 +78,7 @@ const LogIn = ({navigation}) => {
               }).catch((error)=>{
                 console.log("fetch error")
                 alert(error.message)
-              })
+              })*/
             }}
             style={styles.loginbutton}
           >
@@ -76,80 +87,83 @@ const LogIn = ({navigation}) => {
           <Text
             onPress={() => {
               setSelected(!selected);
-              navigation.navigate('SignUp');
+              navigation.navigate("SignUp");
             }}
             style={[styles.signinlink, styles.signinlinkTypo]}
-          >SignUp</Text>
+          >
+            SignUp
+          </Text>
         </View>
       </View>
     </View>
   );
 };
 
-const getStyles = (selected) => StyleSheet.create({
-  frameFlexBox: {
-    overflow: "hidden",
-    alignItems: "center",
-  },
-  logIn1Typo: {
-    textAlign: "center",
-    color: Color.white,
-    fontFamily: FontFamily.novaRound,
-  },
-  signinlinkTypo: {
-    fontFamily: FontFamily.rosarioRegular,
-    fontSize: FontSize.size_11xl,
-    textAlign: "center",
-    color: selected ? "#FFFFFF" : Color.white,
-  },
-  LogIn1: {
-    fontSize: FontSize.size_41xl,
-    alignSelf: "stretch",
-  },
-  loginsubtext: {
-    fontSize: 20,
-    width: 343,
-    height: 35,
-    marginTop: 15,
-  },
-  logininputs: {
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  loginbutton: {
-    borderRadius: Border.br_81xl,
-    backgroundColor: selected ? "#404263" : Color.dimgray,
-    paddingHorizontal: Padding.p_13xl,
-    paddingVertical: Padding.p_base,
-    justifyContent: "center",
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  signinlink: {
-    marginTop: 22,
-    alignSelf: "stretch",
-  },
-  frame: {
-    marginTop: 49,
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  logininputsParent: {
-    marginTop: 15,
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  logIn: {
-    backgroundColor: Color.slategray,
-    flex: 1,
-    width: "100%",
-    height: 812,
-    paddingHorizontal: 13,
-    paddingVertical: Padding.p_49xl,
-    alignItems: "center",
+const getStyles = (selected) =>
+  StyleSheet.create({
+    frameFlexBox: {
+      overflow: "hidden",
+      alignItems: "center",
+    },
+    logIn1Typo: {
+      textAlign: "center",
+      color: Color.white,
+      fontFamily: FontFamily.novaRound,
+    },
+    signinlinkTypo: {
+      fontFamily: FontFamily.rosarioRegular,
+      fontSize: FontSize.size_11xl,
+      textAlign: "center",
+      color: selected ? "#FFFFFF" : Color.white,
+    },
+    LogIn1: {
+      fontSize: FontSize.size_41xl,
+      alignSelf: "stretch",
+    },
+    loginsubtext: {
+      fontSize: 20,
+      width: 343,
+      height: 35,
+      marginTop: 15,
+    },
+    logininputs: {
+      alignSelf: "stretch",
+      alignItems: "center",
+    },
+    loginbutton: {
+      borderRadius: Border.br_81xl,
+      backgroundColor: selected ? "#404263" : Color.dimgray,
+      paddingHorizontal: Padding.p_13xl,
+      paddingVertical: Padding.p_base,
+      justifyContent: "center",
+      alignSelf: "stretch",
+      alignItems: "center",
+    },
+    signinlink: {
+      marginTop: 22,
+      alignSelf: "stretch",
+    },
+    frame: {
+      marginTop: 49,
+      alignSelf: "stretch",
+      alignItems: "center",
+    },
+    logininputsParent: {
+      marginTop: 15,
+      alignSelf: "stretch",
+      alignItems: "center",
+    },
+    logIn: {
+      backgroundColor: Color.slategray,
+      flex: 1,
+      width: "100%",
+      height: 812,
+      paddingHorizontal: 13,
+      paddingVertical: Padding.p_49xl,
+      alignItems: "center",
 
-    paddingTop: height * 0.15
-  },
-});
+      paddingTop: height * 0.15,
+    },
+  });
 
 export default LogIn;

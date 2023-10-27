@@ -3,10 +3,11 @@ import { Text, StyleSheet, View, Pressable, TextInput } from "react-native";
 import { Image } from "expo-image";
 import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const Journal = () => {
+const Journal = ({ navigation }) => {
   return (
-    <View style={styles.journal}>
+    <SafeAreaView style={styles.journal}>
       <View style={[styles.heading, styles.headingFlexBox]}>
         <Text style={[styles.journal1, styles.journal1FlexBox]}>Journal</Text>
       </View>
@@ -31,8 +32,8 @@ const Journal = () => {
         />
       </Pressable>
       <TextInput style={[styles.entrytextinput, styles.headingBg]} />
-      <BottomMenuBarContainer />
-    </View>
+      <BottomMenuBarContainer navigation={navigation} />
+    </SafeAreaView>
   );
 };
 

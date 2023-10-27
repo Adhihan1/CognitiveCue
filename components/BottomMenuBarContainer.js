@@ -3,35 +3,66 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { Padding, Color } from "../GlobalStyles";
 
-const BottomMenuBarContainer = () => {
+const BottomMenuBarContainer = (props) => {
+  const navigation = props.navigation;
   return (
     <Pressable style={[styles.bottommenubar, styles.vectorParentFlexBox]}>
       <View style={[styles.vectorParent, styles.vectorParentFlexBox]}>
-        <Image
-          style={styles.vectorIcon}
-          contentFit="cover"
-          source={require("../assets/vector5.png")}
-        />
-        <Image
-          style={styles.vectorIcon1}
-          contentFit="cover"
-          source={require("../assets/vector6.png")}
-        />
-        <Image
-          style={[styles.vectorIcon2, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector7.png")}
-        />
-        <Image
-          style={[styles.vectorIcon2, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector8.png")}
-        />
-        <Image
-          style={[styles.vectorIcon4, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector9.png")}
-        />
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Reminders");
+          }}
+        >
+          <Image
+            style={styles.vectorIcon}
+            contentFit="cover"
+            source={require("../assets/vector5.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Journal");
+          }}
+        >
+          <Image
+            style={styles.vectorIcon1}
+            contentFit="cover"
+            source={require("../assets/vector6.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("HomeScreen");
+          }}
+        >
+          <Image
+            style={[styles.vectorIcon2, styles.vectorIconLayout]}
+            contentFit="cover"
+            source={require("../assets/vector7.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Games");
+          }}
+        >
+          <Image
+            style={[styles.vectorIcon2, styles.vectorIconLayout]}
+            contentFit="cover"
+            source={require("../assets/vector8.png")}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Rating");
+          }}
+        >
+          <Image
+            style={[styles.vectorIcon4, styles.vectorIconLayout]}
+            contentFit="cover"
+            source={require("../assets/vector9.png")}
+          />
+        </Pressable>
       </View>
     </Pressable>
   );

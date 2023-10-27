@@ -1,47 +1,67 @@
 import * as React from "react";
-import { Pressable, Text, StyleSheet, View } from "react-native";
+import { Pressable, Text, StyleSheet, View, Modal } from "react-native";
 import { Image } from "expo-image";
 import MainProfileContentContainer from "../components/MainProfileContentContainer";
 import { Color, FontSize, FontFamily, Padding } from "../GlobalStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 
-const ProfilePosts = ({navigation}) => {
+const ProfilePosts = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalText, setModalText] = React.useState("error");
   return (
     <SafeAreaView style={styles.profileposts}>
       <View style={[styles.header, styles.headerFlexBox]}>
-        <Text 
+        <Text
           style={styles.settings}
           onPress={() => {
             // DISPLAY SETTINGS HERE
           }}
-        >Settings</Text>
+        >
+          Settings
+        </Text>
         <Text style={[styles.profile, styles.logoutSpaceBlock]}>Profile</Text>
-        <Text 
+        <Text
           style={[styles.logout, styles.logoutSpaceBlock]}
           onPress={() => {
             // LOGOUT
-            navigation.navigate('LogIn');
+            navigation.navigate("LogIn");
           }}
-        >Logout</Text>
+        >
+          Logout
+        </Text>
       </View>
       <MainProfileContentContainer />
-      <Pressable style={[styles.optionButton, styles.privacybuttonFlexBox]}>
+      <Pressable
+        onPress={() => {
+          // Open Notification Prefrences
+          setModalText("Would You Like to Allow Notifications?");
+          setModalVisible(true);
+        }}
+        style={[styles.optionButton, styles.privacybuttonFlexBox]}
+      >
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
           source={require("../assets/vector1.png")}
         />
-        <Text
-          style={[styles.privacy, styles.privacyTypo]}
-        >Notification Preferences</Text>
+        <Text style={[styles.privacy, styles.privacyTypo]}>
+          Notification Preferences
+        </Text>
         <Image
           style={styles.arrowIcon}
           contentFit="cover"
           source={require("../assets/vector2.png")}
         />
       </Pressable>
-      <Pressable style={[styles.optionButton, styles.privacybuttonFlexBox]}>
+      <Pressable
+        onPress={() => {
+          // Open Privacy
+          setModalText("Would You Like to Allow Tracking?");
+          setModalVisible(true);
+        }}
+        style={[styles.optionButton, styles.privacybuttonFlexBox]}
+      >
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
@@ -55,10 +75,42 @@ const ProfilePosts = ({navigation}) => {
         />
       </Pressable>
       <View style={styles.profilepostsChild} />
-      <BottomMenuBarContainer />
+      <BottomMenuBarContainer navigation={navigation} />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>{modalText}</Text>
+            <View style={styles.modalButtons}>
+              <ModalButton text="Yes" x={{ modalVisible, setModalVisible }} />
+              <ModalButton text="No" x={{ modalVisible, setModalVisible }} />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
+
+function ModalButton(props) {
+  return (
+    <Pressable
+      style={[styles.button, styles.buttonClose]}
+      onPress={() => {
+        props.x.setModalVisible(!props.x.modalVisible);
+      }}
+    >
+      <Text style={styles.textStyle}>{props.text}</Text>
+    </Pressable>
+  );
+}
 
 const styles = StyleSheet.create({
   headerFlexBox: {
@@ -187,6 +239,54 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     flex: 1,
     backgroundColor: Color.slategray,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalButtons: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    margin: 5,
+    width: 150,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontFamily: FontFamily.poetsonOne,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 

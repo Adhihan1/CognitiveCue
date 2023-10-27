@@ -3,10 +3,12 @@ import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import PriceCard from "../components/PriceCard";
 import { Color, FontSize, FontFamily, Padding, Border } from "../GlobalStyles";
+import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const Games = () => {
+const Games = ({ navigation }) => {
   return (
-    <View style={[styles.games, styles.gamesFlexBox]}>
+    <SafeAreaView style={[styles.games, styles.gamesFlexBox]}>
       <View style={[styles.frame, styles.frameFlexBox]}>
         <Text style={styles.market}>Memory Arcade</Text>
       </View>
@@ -26,44 +28,10 @@ const Games = () => {
       <View style={styles.frame1}>
         <PriceCard />
         <PriceCard textMarginTop={10} />
-        <PriceCard textMarginTop={10} />
+        <PriceCard textMarginTop={11} />
       </View>
-      <View style={[styles.bottommenubar, styles.gamesFlexBox]}>
-        <View style={[styles.vectorParent, styles.frameFlexBox]}>
-          <Image
-            style={styles.vectorIcon}
-            contentFit="cover"
-            source={require("../assets/vector14.png")}
-          />
-          <Image
-            style={styles.vectorIcon1}
-            contentFit="cover"
-            source={require("../assets/vector15.png")}
-          />
-          <Image
-            style={[styles.vectorIcon2, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector16.png")}
-          />
-          <Image
-            style={[styles.vectorIcon2, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector17.png")}
-          />
-          <Image
-            style={[styles.vectorIcon4, styles.vectorIconLayout]}
-            contentFit="cover"
-            source={require("../assets/vector18.png")}
-          />
-        </View>
-      </View>
-      <View style={styles.contentmarketBlock}>
-        <View style={styles.contentmarketBlockChild} />
-        <Text style={[styles.item1Name, styles.textTypo]}>{`Item #1 Name
-Goes Here`}</Text>
-        <Text style={[styles.text, styles.textTypo]}>$19.99</Text>
-      </View>
-    </View>
+      <BottomMenuBarContainer navigation={navigation} />
+    </SafeAreaView>
   );
 };
 
@@ -76,10 +44,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",
   },
   gamesLayout: {
-    overflow: "hidden",
     width: "100%",
   },
   vectorIconLayout: {
@@ -89,9 +55,7 @@ const styles = StyleSheet.create({
   textTypo: {
     color: Color.black,
     fontSize: FontSize.uI14Semi_size,
-    left: 0,
     textAlign: "left",
-    position: "absolute",
   },
   market: {
     fontSize: FontSize.size_16xl,
@@ -117,26 +81,6 @@ const styles = StyleSheet.create({
     maxHeight: "100%",
     position: "absolute",
   },
-  search: {
-    marginTop: -9,
-    left: 16,
-    fontSize: FontSize.uI16Semi_size,
-    fontWeight: "500",
-    fontFamily: FontFamily.uI16Medium,
-    color: Color.gray03,
-    textAlign: "left",
-    top: "50%",
-    position: "absolute",
-  },
-  iconsend: {
-    marginTop: -17,
-    right: 8,
-    width: 34,
-    height: 34,
-    top: "50%",
-    position: "absolute",
-    display: "none",
-  },
   inputsearch: {
     width: 343,
     height: 50,
@@ -146,7 +90,7 @@ const styles = StyleSheet.create({
   },
   frame1: {
     width: 375,
-    height: 535,
+    height: 565,
     paddingHorizontal: Padding.p_3xs,
     paddingVertical: 0,
     zIndex: 2,
@@ -170,13 +114,6 @@ const styles = StyleSheet.create({
   },
   vectorParent: {
     paddingHorizontal: 0,
-    paddingVertical: Padding.p_8xs,
-  },
-  bottommenubar: {
-    backgroundColor: Color.white,
-    zIndex: 3,
-    marginTop: 67,
-    alignSelf: "stretch",
   },
   contentmarketBlockChild: {
     top: 0,
@@ -185,7 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: Color.whitesmoke,
     height: 110,
     left: 0,
-    position: "absolute",
   },
   item1Name: {
     top: 118,
@@ -210,8 +146,7 @@ const styles = StyleSheet.create({
   games: {
     backgroundColor: Color.slategray,
     flex: 1,
-    height: 812,
-    overflow: "hidden",
+    height: "100%",
     width: "100%",
   },
 });
