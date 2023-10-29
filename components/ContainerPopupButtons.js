@@ -3,7 +3,8 @@ import { Image } from "expo-image";
 import { StyleSheet, Pressable, Text, View } from "react-native";
 import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 
-const ContainerPopupButtons = () => {
+const ContainerPopupButtons = (props) => {
+  const navigation = props.navigation
   return (
     <View style={styles.popup}>
       <View style={styles.bg}>
@@ -18,7 +19,7 @@ const ContainerPopupButtons = () => {
           </Text>
           <Text style={[styles.text1, styles.text1Clr]} />
         </View>
-        <Pressable style={[styles.buttonprimary, styles.notRightNowPosition]}>
+        <Pressable onPress={() => {navigation.navigate("HomeScreen");}} style={[styles.buttonprimary, styles.notRightNowPosition]}>
           <Text style={styles.iLoveIt}>I love it!</Text>
         </Pressable>
         <Text style={[styles.notRightNow, styles.notRightNowPosition]}>
@@ -89,12 +90,14 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     marginBottom: 15,
+    marginTop: 20,
   },
   vectorIcon: {
     width: 322,
     height: 54,
     marginLeft: "auto",
     marginRight: "auto",
+    marginTop: 50,
   },
   popup: {
     width: 343,

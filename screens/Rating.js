@@ -3,10 +3,10 @@ import { StyleSheet, View } from "react-native";
 import ContainerPopupButtons from "../components/ContainerPopupButtons";
 import { Color } from "../GlobalStyles";
 
-const Rating = () => {
+const Rating = ({navigation}) => {
   return (
     <View style={styles.rating}>
-      <ContainerPopupButtons />
+      <ContainerPopupButtons navigation={navigation}/>
     </View>
   );
 };

@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   heading: {
     backgroundColor: Color.dimgray,
     justifyContent: "center",
+    marginTop: 100
   },
   imageIcon1: {
     marginTop: 22,
