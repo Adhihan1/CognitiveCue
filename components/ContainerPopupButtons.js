@@ -6,9 +6,7 @@ import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 const ContainerPopupButtons = () => {
   return (
     <View style={styles.popup}>
-      <View
-        style={styles.bg}
-      >
+      <View style={styles.bg}>
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
@@ -33,10 +31,9 @@ const ContainerPopupButtons = () => {
 
 const styles = StyleSheet.create({
   notRightNowPosition: {
-    width: 311
+    width: 311,
   },
   textLayout: {
-    height: 84,
     width: 315,
   },
   text1Clr: {
@@ -48,7 +45,8 @@ const styles = StyleSheet.create({
     width: 343,
     height: 427,
     backgroundColor: "white",
-    display: "flex"
+    display: "flex",
+    flexDirection: "column",
   },
   iLoveIt: {
     fontSize: FontSize.size_11xl,
@@ -62,6 +60,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: Padding.p_13xl,
     paddingVertical: Padding.p_base,
     alignItems: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: 15,
   },
   notRightNow: {
     fontSize: FontSize.size_mini,
@@ -69,13 +70,15 @@ const styles = StyleSheet.create({
     color: Color.dimgray,
     fontWeight: "700",
     textAlign: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   howAreYou: {
     fontSize: FontSize.size_16xl,
     fontFamily: FontFamily.openSansBold,
-    height: 84,
     width: 315,
     fontWeight: "700",
+    textAlign: "center",
   },
   text1: {
     fontSize: FontSize.uI16Semi_size,
@@ -83,12 +86,15 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.ostrich,
   },
   text: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: 15,
   },
   vectorIcon: {
     width: 322,
     height: 54,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
   },
   popup: {
     width: 343,
