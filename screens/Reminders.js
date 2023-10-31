@@ -1,59 +1,71 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Pressable,
+  ScrollView,
+  TextInput,
+} from "react-native";
 import { Image } from "expo-image";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import TopHeader from "../components/TopHeader";
 import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Reminders = ({ navigation }) => {
+  const [entries, setEntry] = React.useState([
+    <Bullet>Example Reminder - 12:08</Bullet>,
+  ]);
   return (
     <SafeAreaView style={[styles.reminders, styles.remindersFlexBox]}>
-      <View style={[styles.header, styles.dateFlexBox]}>
-        <Text style={[styles.reminders1, styles.todayFlexBox]}>Reminders</Text>
-      </View>
+      <TopHeader title="Reminders" />
       <View style={[styles.date, styles.dateFlexBox]}>
         <Text style={[styles.today, styles.todayFlexBox]}>Today</Text>
       </View>
-      <View style={styles.list}>
-        <View style={[styles.bullet, styles.bulletLayout]}>
-          <Image
-            style={styles.bulletChild}
-            contentFit="cover"
-            source={require("../assets/ellipse-116.png")}
-          />
-          <Text style={[styles.doThis, styles.thisTypo]}>Do this</Text>
-        </View>
-        <View style={[styles.bullet1, styles.bulletLayout]}>
-          <Image
-            style={styles.bulletChild}
-            contentFit="cover"
-            source={require("../assets/ellipse-116.png")}
-          />
-          <Text style={[styles.doThis1, styles.thisTypo]}>Do this</Text>
-        </View>
-        <View style={[styles.bullet1, styles.bulletLayout]}>
-          <Image
-            style={styles.bulletChild}
-            contentFit="cover"
-            source={require("../assets/ellipse-116.png")}
-          />
-          <Text style={[styles.doThis, styles.thisTypo]}>Do this</Text>
-        </View>
-      </View>
-      <Pressable style={[styles.newentry, styles.dateFlexBox]}>
-        <Text style={[styles.newReminder, styles.thisTypo]}>New Reminder</Text>
+      <ScrollView>
+        <View style={styles.list}>{entries}</View>
+      </ScrollView>
+      <Pressable
+        onPress={() => {
+          var timeData = new Date();
+          var time = timeData.toLocaleTimeString(navigator.language, {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+          setEntry([...entries, <Bullet data={time}>Edit Text Here</Bullet>]);
+        }}
+        style={[styles.newentry, styles.dateFlexBox]}
+      >
         <Image
           style={styles.vectorIcon}
           contentFit="cover"
           source={require("../assets/vector12.png")}
         />
+        <Text style={[styles.newReminder, styles.thisTypo]}>New Reminder</Text>
       </Pressable>
+      <View style={[styles.entrytextinput, styles.headingBg]} />
       <BottomMenuBarContainer navigation={navigation} />
     </SafeAreaView>
   );
 };
 
+function Bullet(props) {
+  return (
+    <View style={[styles.bullet, styles.bulletLayout]}>
+      <View style={styles.bulletChild} />
+      <TextInput multiline style={[styles.doThis, styles.thisTypo]}>
+        {props.children}
+      </TextInput>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  headingBg: {
+    backgroundColor: Color.dimgray,
+    justifyContent: "center",
+  },
   remindersFlexBox: {
     alignItems: "center",
     justifyContent: "center",
@@ -67,14 +79,16 @@ const styles = StyleSheet.create({
     color: Color.white,
   },
   bulletLayout: {
-    width: 172,
-    height: 48,
+    marginBottom: 50,
+    display: "flex",
+    flexDirection: "row",
   },
   thisTypo: {
     fontFamily: FontFamily.redRoseRegular,
-    textAlign: "center",
+    textAlign: "left",
     color: Color.white,
-    position: "absolute",
+    width: 300,
+    paddingTop: 0,
   },
   vectorIconLayout: {
     width: 45,
@@ -110,21 +124,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   bulletChild: {
-    top: 0,
-    left: 0,
     width: 47,
     height: 48,
-    position: "absolute",
+    backgroundColor: "lightgrey",
+    borderRadius: 50,
+    marginTop: "auto",
+    marginBottom: "auto",
   },
   doThis: {
-    top: 2,
     fontSize: FontSize.size_11xl,
-    left: 70,
     fontFamily: FontFamily.redRoseRegular,
+    padding: 0,
+    marginLeft: 10,
   },
-  bullet: {
-    height: 48,
-  },
+  bullet: {},
   doThis1: {
     top: 6,
     fontSize: FontSize.size_11xl,
@@ -140,21 +153,27 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     alignSelf: "stretch",
     flex: 1,
+    width: 400,
   },
   newReminder: {
-    top: 14,
-    left: 56,
+    color: "white",
+    textShadowColor: "#000000",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+
+    marginLeft: 15,
+    alignSelf: "center",
     fontSize: FontSize.size_6xl,
-    display: "flex",
-    width: 239,
-    height: 45,
-    zIndex: 0,
-    justifyContent: "center",
-    alignItems: "center",
+    fontFamily: FontFamily.redRoseRegular,
+  },
+  entrytextinput: {
+    padding: 21,
+    alignItems: "flex-end",
+    alignSelf: "stretch",
   },
   vectorIcon: {
     width: 53,
-    height: 52,
+    height: 53,
     zIndex: 1,
     marginLeft: 10,
   },

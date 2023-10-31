@@ -4,7 +4,7 @@ import { StyleSheet, Pressable, Text, View } from "react-native";
 import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 
 const ContainerPopupButtons = (props) => {
-  const navigation = props.navigation
+  const navigation = props.navigation;
   return (
     <View style={styles.popup}>
       <View style={styles.bg}>
@@ -19,12 +19,23 @@ const ContainerPopupButtons = (props) => {
           </Text>
           <Text style={[styles.text1, styles.text1Clr]} />
         </View>
-        <Pressable onPress={() => {navigation.navigate("HomeScreen");}} style={[styles.buttonprimary, styles.notRightNowPosition]}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("HomeScreen");
+          }}
+          style={[styles.buttonprimary, styles.notRightNowPosition]}
+        >
           <Text style={styles.iLoveIt}>I love it!</Text>
         </Pressable>
-        <Text style={[styles.notRightNow, styles.notRightNowPosition]}>
-          Not right now.
-        </Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("HomeScreen");
+          }}
+        >
+          <Text style={[styles.notRightNow, styles.notRightNowPosition]}>
+            Not right now.
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -43,11 +54,11 @@ const styles = StyleSheet.create({
   },
   bg: {
     borderRadius: Border.br_5xs,
-    width: 343,
-    height: 427,
+    width: 383,
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
+    paddingBottom: 50,
   },
   iLoveIt: {
     fontSize: FontSize.size_11xl,
@@ -73,6 +84,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginLeft: "auto",
     marginRight: "auto",
+    marginTop: 0,
   },
   howAreYou: {
     fontSize: FontSize.size_16xl,
@@ -102,6 +114,10 @@ const styles = StyleSheet.create({
   popup: {
     width: 343,
     height: 427,
+    display: "flex",
+    alignSelf: "center",
+    alignContent: "center",
+    alignItems: "center",
   },
 });
 

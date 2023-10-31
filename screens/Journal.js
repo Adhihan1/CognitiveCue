@@ -1,83 +1,131 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable, TextInput } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  Pressable,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { Image } from "expo-image";
 import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
+import TopHeader from "../components/TopHeader";
 import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+const UserContext = React.createContext(null);
+
 const Journal = ({ navigation }) => {
+  var [numEntries, setNumEntries] = React.useState(1);
+  const [entries, setEntry] = React.useState([]);
   return (
-    <SafeAreaView style={styles.journal}>
-      <View style={[styles.heading, styles.headingFlexBox]}>
-        <Text style={[styles.journal1, styles.journal1FlexBox]}>Journal</Text>
-      </View>
-      <View style={styles.journals}>
-        <Image
-          style={styles.imageIconLayout}
-          contentFit="cover"
-          source={require("../assets/image.png")}
-        />
-        <Image
-          style={[styles.imageIcon1, styles.imageIconLayout]}
-          contentFit="cover"
-          source={require("../assets/image1.png")}
-        />
-      </View>
-      <Pressable style={[styles.newentry, styles.headingFlexBox]}>
-        <Text style={[styles.newEntry, styles.journal1FlexBox]}>New Entry</Text>
-        <Image
-          style={styles.vectorIcon}
-          contentFit="cover"
-          source={require("../assets/vector11.png")}
-        />
-      </Pressable>
-      <TextInput style={[styles.entrytextinput, styles.headingBg]} />
-      <BottomMenuBarContainer navigation={navigation} />
-    </SafeAreaView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <UserContext.Provider value={{ entries: entries, setEntry: setEntry }}>
+        <SafeAreaView style={styles.journal}>
+          <TopHeader title="Journal" />
+          <ScrollView>
+            <View
+              onStartShouldSetResponder={() => true}
+              style={styles.journals}
+            >
+              {entries}
+            </View>
+          </ScrollView>
+          <Pressable
+            onPress={() => {
+              var timeData = new Date();
+              var date =
+                timeData.getMonth() +
+                1 +
+                "/" +
+                timeData.getDate() +
+                "/" +
+                timeData.getFullYear().toString().slice(-2);
+              var time = timeData.toLocaleTimeString(navigator.language, {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+              setNumEntries(numEntries + 1);
+              console.log(numEntries);
+              setEntry([
+                ...entries,
+                <JournalEntry
+                  data={date + " - " + time}
+                  entries={entries}
+                  setEntry={setEntry}
+                  index={numEntries}
+                >
+                  Edit Text Here
+                </JournalEntry>,
+              ]);
+            }}
+            style={[styles.newentry]}
+          >
+            <Image
+              style={styles.vectorIcon}
+              contentFit="cover"
+              source={require("../assets/vector11.png")}
+            />
+            <Text style={[styles.newEntry]}>New Entry</Text>
+          </Pressable>
+          <View style={[styles.entrytextinput, styles.headingBg]} />
+          <BottomMenuBarContainer navigation={navigation} />
+        </SafeAreaView>
+      </UserContext.Provider>
+    </TouchableWithoutFeedback>
   );
 };
 
+function JournalEntry(props) {
+  const { entries, setEntry } = React.useContext(UserContext);
+  return (
+    <Pressable
+      onLongPress={(e) => {
+        console.log(props.index);
+        console.log(entries);
+        initarr = [];
+        for (i in entries) {
+          //console.log(entries[i].props.index);
+          //console.log(props.index);
+          if (entries[i].props.index == props.index) {
+            console.log("to delete " + entries[i].props.index);
+          } else {
+            initarr.push(entries[i]);
+          }
+        }
+        setEntry(initarr);
+      }}
+      delayLongPress={1000}
+      style={styles.imageIconLayout}
+    >
+      <TextInput style={styles.entryText} multiline>
+        {props.children}
+      </TextInput>
+      <Text style={styles.entryData}>{props.data}</Text>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
-  headingFlexBox: {
-    flexDirection: "row",
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  journal1FlexBox: {
-    zIndex: 0,
-    display: "flex",
-    textAlign: "center",
-    color: Color.white,
-    position: "absolute",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   imageIconLayout: {
-    height: 156,
-    overflow: "hidden",
-    maxWidth: "100%",
-    borderRadius: Border.br_49xl,
-    alignSelf: "stretch",
+    borderRadius: 40,
+    backgroundColor: "white",
     width: "100%",
+    padding: 30,
+    marginBottom: 20,
+  },
+  entryText: {
+    fontSize: 20,
+    fontFamily: FontFamily.redRoseRegular,
+  },
+  entryData: {
+    textAlign: "right",
   },
   headingBg: {
     backgroundColor: Color.dimgray,
     justifyContent: "center",
-  },
-  journal1: {
-    marginTop: -32.5,
-    marginLeft: -187.5,
-    top: "50%",
-    left: "50%",
-    fontSize: FontSize.size_16xl,
-    fontFamily: FontFamily.novaRound,
-    width: 375,
-    height: 65,
-  },
-  heading: {
-    backgroundColor: Color.dimgray,
-    justifyContent: "center",
-    marginTop: 100
   },
   imageIcon1: {
     marginTop: 22,
@@ -90,12 +138,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   newEntry: {
-    top: 14,
-    left: 31,
+    color: "white",
+    textShadowColor: "#000000",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+
+    marginLeft: 15,
+    alignSelf: "center",
     fontSize: FontSize.size_6xl,
     fontFamily: FontFamily.redRoseRegular,
-    width: 239,
-    height: 45,
   },
   vectorIcon: {
     width: 53,
@@ -106,9 +157,12 @@ const styles = StyleSheet.create({
   newentry: {
     paddingHorizontal: Padding.p_4xl,
     paddingVertical: Padding.p_3xs,
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
   },
   entrytextinput: {
-    padding: 11,
+    padding: 21,
     alignItems: "flex-end",
     alignSelf: "stretch",
   },
