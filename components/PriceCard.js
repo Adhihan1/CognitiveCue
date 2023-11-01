@@ -18,19 +18,19 @@ const PriceCard = ({ textMarginTop }) => {
       <Pressable style={[styles.item3, styles.itemPosition]}>
         <View style={styles.item3Child} />
         <Text style={[styles.item3Name, styles.textTypo]}>{`Final Game`}</Text>
-        <Text style={[styles.text, styles.textTypo]}>$19.99</Text>
+        <Text style={[styles.text, styles.textTypo]}>Play</Text>
       </Pressable>
       <Pressable style={[styles.item2, styles.itemPosition]}>
         <View style={styles.item3Child} />
         <Text style={[styles.item3Name, styles.textTypo]}>{`Other Game`}</Text>
-        <Text style={[styles.text, styles.textTypo]}>$19.99</Text>
+        <Text style={[styles.text, styles.textTypo]}>Play</Text>
       </Pressable>
       <Pressable style={[styles.item1, styles.itemPosition]}>
         <View style={styles.item3Child} />
         <Text
           style={[styles.item3Name, styles.textTypo]}
         >{`Example Game`}</Text>
-        <Text style={[styles.text, styles.textTypo]}>$19.99</Text>
+        <Text style={[styles.text, styles.textTypo]}>Play</Text>
       </Pressable>
     </View>
   );
