@@ -12,9 +12,73 @@ const Games = ({ navigation }) => {
     <SafeAreaView style={[styles.games, styles.gamesFlexBox]}>
       <TopHeader title="Memory Arcade" />
       <View style={styles.frame1}>
-        <PriceCard />
-        <PriceCard textMarginTop={0} />
-        <PriceCard textMarginTop={0} />
+        <View style={[styles.row1]}>
+          <Pressable style={[styles.item3, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Memory Game`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item2, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Trivia Game`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item1, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Matching Game`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+        </View>
+        <View style={[styles.row1]}>
+          <Pressable style={[styles.item3, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Brain Training`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item2, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Memory Match`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item1, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Word Search`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+        </View>
+        <View style={[styles.row1]}>
+          <Pressable style={[styles.item3, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Tidbits and Tips`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item2, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text
+              style={[styles.item3Name, styles.textTypo]}
+            >{`Word Scramble`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+          <Pressable style={[styles.item1, styles.itemPosition]}>
+            <View style={styles.item3Child} />
+            <Text style={[styles.item3Name, styles.textTypo]}>{`Soduku`}</Text>
+            <Text style={[styles.text, styles.textTypo]}>Play</Text>
+          </Pressable>
+        </View>
       </View>
       <BottomMenuBarContainer navigation={navigation} />
     </SafeAreaView>
@@ -39,6 +103,43 @@ const styles = StyleSheet.create({
   },
   games: {
     backgroundColor: Color.slategray,
+    flex: 1,
+  },
+  itemPosition: {
+    top: 0,
+    position: "absolute",
+  },
+  textTypo: {
+    marginTop: 8,
+    textAlign: "left",
+    color: Color.white,
+    fontSize: FontSize.uI14Semi_size,
+  },
+  item3Child: {
+    borderRadius: Border.br_5xs,
+    backgroundColor: Color.whitesmoke,
+    height: 110,
+    width: 110,
+  },
+  item3Name: {
+    fontFamily: FontFamily.uI14Regular,
+    width: 110,
+  },
+  text: {
+    fontWeight: "600",
+    fontFamily: FontFamily.uI16Semi,
+  },
+  item3: {
+    left: 246,
+  },
+  item2: {
+    left: 123,
+  },
+  item1: {
+    left: 0,
+  },
+  row1: {
+    alignSelf: "stretch",
     flex: 1,
   },
 });
