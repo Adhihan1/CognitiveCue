@@ -83,7 +83,6 @@ const getStyles = (selected) =>
     },
     getStarted: {
       width: "90%",
-      height: "fit-content",
     },
     getStartedText: {
       fontSize: 35,
