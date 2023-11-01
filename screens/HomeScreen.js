@@ -38,12 +38,12 @@ const HomeScreen = ({ navigation }) => {
           Notifications
         </Text>
         <View style={[styles.notif1, styles.notif1Bg]}>
-          <Text style={[styles.notif1text, styles.idkGeoTypo]}>Wake Up</Text>
+          <Text style={[styles.notif1text, styles.idkGeoTypo]}>
+            Take Medication
+          </Text>
         </View>
         <View style={[styles.notif1, styles.notif1Bg]}>
-          <Text style={[styles.notif1text, styles.idkGeoTypo]}>
-            Schedule Appointment
-          </Text>
+          <Text style={[styles.notif1text, styles.idkGeoTypo]}>Do Yoga</Text>
         </View>
         <View style={[styles.notif1, styles.notif1Bg]}>
           <Text style={[styles.notif1text, styles.idkGeoTypo]}>
