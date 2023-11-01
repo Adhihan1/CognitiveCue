@@ -44,6 +44,11 @@ const App = () => {
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="Reminders"
               component={Reminders}
               options={{ headerShown: false }}
@@ -76,11 +81,6 @@ const App = () => {
             <Stack.Screen
               name="SignUp"
               component={SignUp}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="HomeScreen"
-              component={HomeScreen}
               options={{ headerShown: false }}
             />
 

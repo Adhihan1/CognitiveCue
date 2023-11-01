@@ -6,6 +6,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 
 const HomeScreen = ({ navigation }) => {
+  [dailyQuote, setDailyQuote] = React.useState(
+    `"Then you will know the truth, and the truth will set you free"
+    - John 8:32`
+  );
   return (
     <SafeAreaView style={[styles.homeScreen, styles.homeScreenFlexBox]}>
       <View style={[styles.header, styles.headerFlexBox]}>
@@ -34,18 +38,16 @@ const HomeScreen = ({ navigation }) => {
           Notifications
         </Text>
         <View style={[styles.notif1, styles.notif1Bg]}>
+          <Text style={[styles.notif1text, styles.idkGeoTypo]}>Wake Up</Text>
+        </View>
+        <View style={[styles.notif1, styles.notif1Bg]}>
           <Text style={[styles.notif1text, styles.idkGeoTypo]}>
-            notif sample
+            Schedule Appointment
           </Text>
         </View>
         <View style={[styles.notif1, styles.notif1Bg]}>
           <Text style={[styles.notif1text, styles.idkGeoTypo]}>
-            notif sample
-          </Text>
-        </View>
-        <View style={[styles.notif1, styles.notif1Bg]}>
-          <Text style={[styles.notif1text, styles.idkGeoTypo]}>
-            notif sample
+            Call Family
           </Text>
         </View>
       </View>
@@ -54,7 +56,7 @@ const HomeScreen = ({ navigation }) => {
           Daily Tip/Quote
         </Text>
         <View style={[styles.tipquote, styles.notif1Bg]}>
-          <Text style={[styles.idkGeo, styles.idkGeoTypo]}>idk - “geo”</Text>
+          <Text style={[styles.idkGeo, styles.idkGeoTypo]}>{dailyQuote}</Text>
         </View>
       </View>
       <BottomMenuBarContainer navigation={navigation} />
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.rosarioRegular,
     fontSize: FontSize.size_6xl,
     textAlign: "left",
-    borerRadius: "10",
+    borderRadius: "10",
     color: Color.white,
   },
   notif1Bg: {
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
   idkGeoTypo: {
     color: Color.black,
     fontFamily: FontFamily.rosarioRegular,
-    fontSize: FontSize.size_6xl,
+    fontSize: 23,
     display: "flex",
     textAlign: "center",
     justifyContent: "center",
@@ -103,13 +105,11 @@ const styles = StyleSheet.create({
   memoryLane: {
     fontSize: FontSize.size_11xl,
     fontFamily: FontFamily.novaRound,
-    width: 195,
     textAlign: "left",
     color: Color.white,
     alignSelf: "stretch",
   },
   memoryLaneWrapper: {
-    height: 36,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -154,29 +154,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: "center",
   },
-  notifications1: {
-    width: 136,
-  },
+  notifications1: {},
   notif1text: {
     width: 296,
   },
   notif1: {
-    borderRadius: Border.br_60xl,
-    height: 69,
     paddingHorizontal: Padding.p_2xl,
-    paddingVertical: Padding.p_13xl,
-    marginTop: 11,
+    marginTop: 13,
     justifyContent: "center",
+    borderRadius: 15,
+    paddingVertical: 15,
   },
   notifications: {
-    width: 369,
     marginTop: 10,
     alignItems: "center",
     flex: 1,
   },
-  dailyTipquote: {
-    width: 167,
-  },
+  dailyTipquote: {},
   idkGeo: {
     width: 278,
   },
