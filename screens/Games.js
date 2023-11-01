@@ -14,21 +14,33 @@ const Games = ({ navigation }) => {
       <View style={styles.frame1}>
         <View style={[styles.row1]}>
           <Pressable style={[styles.item3, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/memoryGame.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Memory Game`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item2, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/triviaGame.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Trivia Game`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item1, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/matchingGame.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Matching Game`}</Text>
@@ -37,21 +49,33 @@ const Games = ({ navigation }) => {
         </View>
         <View style={[styles.row1]}>
           <Pressable style={[styles.item3, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/brainTraining.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Brain Training`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item2, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/memoryMatch.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Memory Match`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item1, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/wordSearch.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Word Search`}</Text>
@@ -60,21 +84,33 @@ const Games = ({ navigation }) => {
         </View>
         <View style={[styles.row1]}>
           <Pressable style={[styles.item3, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/tidbitsAndTips.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Tidbits and Tips`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item2, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/wordScramble.png")}
+              style={styles.item3Child}
+            />
             <Text
               style={[styles.item3Name, styles.textTypo]}
             >{`Word Scramble`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
           <Pressable style={[styles.item1, styles.itemPosition]}>
-            <View style={styles.item3Child} />
+            <Image
+              contentFit="cover"
+              source={require("../assets/soduku.png")}
+              style={styles.item3Child}
+            />
             <Text style={[styles.item3Name, styles.textTypo]}>{`Soduku`}</Text>
             <Text style={[styles.text, styles.textTypo]}>Play</Text>
           </Pressable>
