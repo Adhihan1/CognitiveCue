@@ -7,8 +7,7 @@ import BottomMenuBarContainer from "../components/BottomMenuBarContainer";
 
 const HomeScreen = ({ navigation }) => {
   [dailyQuote, setDailyQuote] = React.useState(
-    `"Then you will know the truth, and the truth will set you free"
-    - John 8:32`
+    `"Every day is a new opportunity to create beautiful memories."`
   );
   return (
     <SafeAreaView style={[styles.homeScreen, styles.homeScreenFlexBox]}>
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.rosarioRegular,
     fontSize: FontSize.size_6xl,
     textAlign: "left",
-    borderRadius: "10",
+    borderRadius: 10,
     color: Color.white,
   },
   notif1Bg: {
@@ -103,11 +102,10 @@ const styles = StyleSheet.create({
     marginLeft: 24,
   },
   memoryLane: {
-    fontSize: FontSize.size_11xl,
-    fontFamily: FontFamily.novaRound,
-    textAlign: "left",
     color: Color.white,
-    alignSelf: "stretch",
+    fontSize: FontSize.size_16xl,
+    fontFamily: FontFamily.novaRound,
+    marginLeft: 10,
   },
   memoryLaneWrapper: {
     flexDirection: "row",
@@ -116,19 +114,18 @@ const styles = StyleSheet.create({
   userIcon: {
     height: 55,
     marginLeft: 20,
+    alignSelf: "center",
+    alignItems: "center",
     width: 48,
   },
   frameParent: {
-    justifyContent: "center",
     flexDirection: "row",
-    alignItems: "center",
   },
   header: {
-    backgroundColor: Color.dimgray,
-    height: 71,
-    justifyContent: "center",
-    flexDirection: "row",
     alignItems: "center",
+    backgroundColor: Color.dimgray,
+    paddingVertical: 12,
+    alignSelf: "stretch",
   },
   hiVictoria: {
     fontSize: 33,

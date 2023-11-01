@@ -2,11 +2,13 @@ import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { Color, FontSize, FontFamily, Padding } from "../GlobalStyles";
-import * as ImagePicker from  'expo-image-picker'
-import DialogInput from 'react-native-dialog-input'
+import * as ImagePicker from "expo-image-picker";
+import DialogInput from "react-native-dialog-input";
 
 const MainProfileContentContainer = () => {
-  const [image, setImage] = React.useState(require("../assets/profilepicture.jpg"));
+  const [image, setImage] = React.useState(
+    require("../assets/profilepicture.jpg")
+  );
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
   const [profileName, setProfileName] = React.useState("Victoria Robertson");
 
@@ -28,9 +30,7 @@ const MainProfileContentContainer = () => {
 
   return (
     <View style={styles.mainprofilecontent}>
-      <View 
-        style={styles.profilepicture}
-      >
+      <View style={styles.profilepicture}>
         <Image
           style={styles.profilepictureIcon}
           contentFit="cover"
@@ -45,7 +45,7 @@ const MainProfileContentContainer = () => {
       <Pressable
         onPress={() => {
           // Change Image Prompt
-          setIsDialogVisible(true)
+          setIsDialogVisible(true);
         }}
       >
         <Image
@@ -54,17 +54,20 @@ const MainProfileContentContainer = () => {
           source={require("../assets/vector.png")}
         />
       </Pressable>
-      <DialogInput isDialogVisible={isDialogVisible}
+      <DialogInput
+        isDialogVisible={isDialogVisible}
         title={"New Name"}
         message={"Type a new name for your profile"}
-        hintInput ={"HINT INPUT"}
-        submitInput={ (inputText) => {
+        hintInput={"HINT INPUT"}
+        submitInput={(inputText) => {
           setProfileName(inputText);
           setIsDialogVisible(false);
-          pickImage()
-        } }
-        closeDialog={ () => {setIsDialogVisible(false)}}>
-      </DialogInput>
+          pickImage();
+        }}
+        closeDialog={() => {
+          setIsDialogVisible(false);
+        }}
+      ></DialogInput>
     </View>
   );
 };
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
     borderColor: Color.white,
     overflow: "hidden",
     position: "relative",
-    marginBottom: 10
+    marginBottom: 10,
   },
   profilepictureIcon: {
     width: 250,
