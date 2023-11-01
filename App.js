@@ -14,8 +14,10 @@ import Rating from "./screens/Rating";
 import Games from "./screens/Games";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import { View, Text, Pressable, TouchableOpacity, LogBox } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
