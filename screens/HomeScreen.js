@@ -125,16 +125,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: Color.dimgray,
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 4,
-    elevation: 4,
-    shadowOpacity: 1,
     height: 71,
-    opacity: 0.5,
     justifyContent: "center",
     flexDirection: "row",
     alignItems: "center",
